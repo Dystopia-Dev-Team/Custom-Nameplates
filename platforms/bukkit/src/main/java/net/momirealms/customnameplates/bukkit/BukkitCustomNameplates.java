@@ -269,7 +269,7 @@ public class BukkitCustomNameplates extends CustomNameplates implements Listener
                             previousLocation.world(currentWorld);
                             previousLocation.position(player.position());
                             for (PlayerListener listener : this.playerListeners) {
-                                listener.onChangeWorld(player);
+                                listener.onLocationChange(player);
                             }
                             continue;
                         }
@@ -280,7 +280,7 @@ public class BukkitCustomNameplates extends CustomNameplates implements Listener
                         double distance = Math.sqrt(Math.pow((currentPos.x() - previousPos.x()), 2) + Math.pow((currentPos.y() - previousPos.y()), 2) + Math.pow(currentPos.z() - previousPos.z(), 2));
                         if (distance > 64) {
                             for (PlayerListener listener : this.playerListeners) {
-                                listener.onTeleport(player);
+                                listener.onLocationChange(player);
                             }
                         }
                     }
@@ -471,22 +471,14 @@ public class BukkitCustomNameplates extends CustomNameplates implements Listener
     @EventHandler(ignoreCancelled = true)
     public void onChangeWorld(PlayerChangedWorldEvent event) {
         if (VersionHelper.isFolia()) return;
-        CNPlayer cnPlayer = getPlayer(event.getPlayer().getUniqueId());
-        if (cnPlayer != null) {
-            for (PlayerListener listener : playerListeners) {
-                listener.onChangeWorld(cnPlayer);
-            }
-        }
+        Player player = event.getPlayer();
+        handleLocationChange(player);
     }
 
     @EventHandler(ignoreCancelled = true)
     public void onRespawn(PlayerRespawnEvent event) {
-        CNPlayer cnPlayer = getPlayer(event.getPlayer().getUniqueId());
-        if (cnPlayer != null) {
-            for (PlayerListener listener : playerListeners) {
-                listener.onRespawn(cnPlayer);
-            }
-        }
+        Player player = event.getPlayer();
+        handleLocationChange(player);
     }
 
     @EventHandler(ignoreCancelled = true)
@@ -494,10 +486,15 @@ public class BukkitCustomNameplates extends CustomNameplates implements Listener
         if (!event.getFrom().getWorld().equals(event.getTo().getWorld())) {
             return;
         }
-        CNPlayer cnPlayer = getPlayer(event.getPlayer().getUniqueId());
+        Player player = event.getPlayer();
+        handleLocationChange(player);
+    }
+
+    private void handleLocationChange(Player player) {
+        CNPlayer cnPlayer = getPlayer(player.getUniqueId());
         if (cnPlayer != null) {
             for (PlayerListener listener : playerListeners) {
-                listener.onTeleport(cnPlayer);
+                listener.onLocationChange(cnPlayer);
             }
         }
     }
