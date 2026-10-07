@@ -25,23 +25,9 @@ import net.momirealms.customnameplates.api.CNPlayer;
 public interface PlayerListener {
 
     /**
-     * Called when a player changes the world
+     * Called when a player's location changes
      *
-     * @param player the player who changes the world
+     * @param player the player whose location changed
      */
-    void onChangeWorld(CNPlayer player);
-
-    /**
-     * Called when a player respawns
-     *
-     * @param player the player who respawns
-     */
-    void onRespawn(CNPlayer player);
-
-    /**
-     * Called when a player teleports
-     *
-     * @param player the player who respawns
-     */
-    void onTeleport(CNPlayer player);
+    void onLocationChange(CNPlayer player);
 }
