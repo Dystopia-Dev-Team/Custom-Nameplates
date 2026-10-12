@@ -62,6 +62,8 @@ command.nameplates.force_unequip.success: "<white>移除了 <arg:0> 的铭牌</w
 command.nameplates.force_preview.success: "<white>强制 <arg:0> 预览他的铭牌</white>"
 command.nameplates.toggle.on: "<white>你正在显示你的铭牌 (前往第三人称查看)</white>"
 command.nameplates.toggle.off: "<white>你关闭了铭牌显示</white>"
+command.nameplates.hide.on: "<white>你不再看到其他玩家的名称牌</white>"
+command.nameplates.hide.off: "<white>你现在能看到其他玩家的名称牌了</white>"
 command.bubbles.equip.failure.not_exists: "<red>气泡 <arg:0> 不存在</red>"
 command.bubbles.equip.failure.permission: "<red>你尚未解锁这个气泡</red>"
 command.bubbles.equip.failure.no_change: "<red>你已经应用这个气泡了</red>"

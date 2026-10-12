@@ -138,7 +138,7 @@ public class NameTag extends AbstractTag implements RelationalFeature {
 
     @Override
     public boolean canShow(CNPlayer viewer) {
-        return viewer.isMet(owner, config.viewerRequirements());
+        return viewer.isMet(owner, config.viewerRequirements()) && !viewer.isHidingAllNameplates();
     }
 
     public void refresh() {

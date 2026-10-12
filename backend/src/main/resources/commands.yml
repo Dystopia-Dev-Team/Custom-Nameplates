@@ -105,6 +105,14 @@ nameplates_list:
   usage:
     - /nameplates list
 
+# A command to toggle the display of nameplates
+# Usage: [COMMAND]
+nameplates_hide:
+  enable: true
+  permission: nameplates.command.hide
+  usage:
+    - /nameplates hide
+
 # A command to force a player to equip the specified bubble
 # Usage: [COMMAND] [PLAYER] [BUBBLE]
 bubbles_force_equip:

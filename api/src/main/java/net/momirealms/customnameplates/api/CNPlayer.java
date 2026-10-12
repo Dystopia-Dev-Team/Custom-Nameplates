@@ -141,6 +141,13 @@ public interface CNPlayer {
     boolean isToggleablePreviewing();
 
     /**
+     * Checks whether the player is hiding all nameplates from their own view.
+     *
+     * @return true if the player is hiding all nameplates, false otherwise
+     */
+    boolean isHidingAllNameplates();
+
+    /**
      * Checks if the player has the specified permission.
      *
      * @param permission the permission to check
