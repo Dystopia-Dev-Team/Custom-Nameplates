@@ -62,6 +62,8 @@ command.nameplates.force_unequip.success: "<white>Removed <arg:0>'s nameplate</w
 command.nameplates.force_preview.success: "<white>Forced <arg:0> to preview nameplates</white>"
 command.nameplates.toggle.on: "<white>You're now showing your tags (Go to third person to view)</white>"
 command.nameplates.toggle.off: "<white>Your tags have been hidden</white>"
+command.nameplates.hide.on: "<white>You are no longer seeing other players' nameplates</white>"
+command.nameplates.hide.off: "<white>You are now seeing other players' nameplates</white>"
 command.bubbles.equip.failure.not_exists: "<red><arg:0> doesn't exist</red>"
 command.bubbles.equip.failure.permission: "<red>You don't have permission to use this bubble</red>"
 command.bubbles.equip.failure.no_change: "<red>Nothing changed as you have already equipped this bubble</red>"

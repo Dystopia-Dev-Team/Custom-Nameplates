@@ -62,6 +62,7 @@ public abstract class AbstractCNPlayer<P> implements CNPlayer {
     private volatile boolean isLoaded = false;
     private volatile boolean tempPreviewing = false;
     private volatile boolean toggleablePreviewing = false;
+    private volatile boolean hidingAllNameplates = false;
 
     private String currentNameplate;
     private String nameplateData;
@@ -295,6 +296,20 @@ public abstract class AbstractCNPlayer<P> implements CNPlayer {
     @Override
     public boolean isToggleablePreviewing() {
         return toggleablePreviewing;
+    }
+
+    /**
+     * Sets whether the player is hiding all nameplates from their own view.
+     *
+     * @param hiding true to hide all nameplates, false to show them
+     */
+    public void setHidingAllNameplates(boolean hiding) {
+        this.hidingAllNameplates = hiding;
+    }
+
+    @Override
+    public boolean isHidingAllNameplates() {
+        return hidingAllNameplates;
     }
 
     @Override

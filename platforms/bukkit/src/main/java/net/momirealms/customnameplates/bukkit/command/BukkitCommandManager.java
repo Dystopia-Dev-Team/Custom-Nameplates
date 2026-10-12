@@ -58,6 +58,7 @@ public class BukkitCommandManager extends AbstractCommandManager<CommandSender> 
                 new NameplatesForcePreviewCommand(this, plugin),
                 new NameplatesForceEquipCommand(this, plugin),
                 new NameplatesToggleCommand(this, plugin),
+                new NameplatesHideCommand(this, plugin),
                 new BubblesForceUnEquipCommand(this, plugin),
                 new BubblesListCommand(this, plugin),
                 new BubblesUnEquipCommand(this, plugin),
