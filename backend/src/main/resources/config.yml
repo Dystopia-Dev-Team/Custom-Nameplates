@@ -71,6 +71,42 @@ resource-pack:
     "1_17-1_20_1": true               # Enable transparent bossbar for Minecraft 1.17-1.20.1
   legacy-unicodes: true               # Enable legacy Unicode support for Minecraft 1.20+ (increases resource pack size by 900KB)
 
+nameplates-gui:
+  title: "Nameplates"
+  rows: 6
+  preferred-collator-language: "default"
+  filler-item:
+    slots:
+      - 45
+      - 47
+      - 48
+      - 50
+      - 51
+      - 53
+    material: BLACK_STAINED_GLASS_PANE
+    model-data: 0
+  nameplate-item:
+    material: NAME_TAG
+    name: "%nameplate% Nameplate"
+    lore:
+      - "Click here to toggle this nameplate"
+    model-data: 0
+  previous-page-item:
+    slot: 46
+    material: ARROW
+    name: "Previous Page"
+    model-data: 0
+  close-item:
+    slot: 49
+    material: BARRIER
+    name: "Close"
+    model-data: 0
+  next-page-item:
+    slot: 52
+    material: ARROW
+    name: "Next Page"
+    model-data: 0
+
 # Additional Settings: Extra options to control behavior and performance.
 other-settings:
   legacy-color-code-support: true     # Enable support for legacy color codes using &
