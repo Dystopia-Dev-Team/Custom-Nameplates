@@ -105,6 +105,14 @@ nameplates_list:
   usage:
     - /nameplates list
 
+# A command to open a GUI showing the available nameplates
+# Usage: [COMMAND]
+nameplates_gui:
+  enable: true
+  permission: nameplates.command.gui
+  usage:
+    - /nameplates gui
+
 # A command to toggle the display of nameplates
 # Usage: [COMMAND]
 nameplates_hide:

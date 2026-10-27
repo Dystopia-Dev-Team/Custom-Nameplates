@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -346,6 +347,100 @@ public abstract class ConfigManager implements ConfigLoader, Reloadable {
     protected boolean stripChatColorTags;
 
     /**
+     * Nameplates GUI title.
+     */
+    protected String nameplatesGuiTitle;
+    /**
+     * Nameplates GUI rows.
+     */
+    protected int nameplatesGuiRows;
+    /**
+     * Nameplates GUI preferred collator language.
+     */
+    protected String nameplatesGuiPreferredCollatorLanguage;
+
+    /**
+     * Nameplates GUI filler item slots.
+     */
+    protected List<Integer> nameplatesGuiFillerItemSlots;
+    /**
+     * Nameplates GUI filler item material.
+     */
+    protected String nameplatesGuiFillerItemMaterial;
+    /**
+     * Nameplates GUI filler item model data.
+     */
+    protected int nameplatesGuiFillerItemModelData;
+
+    /**
+     * Nameplates GUI nameplate item material.
+     */
+    protected String nameplatesGuiNameplateItemMaterial;
+    /**
+     * Nameplates GUI nameplate item name.
+     */
+    protected String nameplatesGuiNameplateItemName;
+    /**
+     * Nameplates GUI nameplate item lore.
+     */
+    protected List<String> nameplatesGuiNameplateItemLore;
+    /**
+     * Nameplates GUI nameplate item model data.
+     */
+    protected int nameplatesGuiNameplateItemModelData;
+
+    /**
+     * Nameplates GUI previous page item slot.
+     */
+    protected int nameplatesGuiPreviousPageItemSlot;
+    /**
+     * Nameplates GUI previous page item material.
+     */
+    protected String nameplatesGuiPreviousPageItemMaterial;
+    /**
+     * Nameplates GUI previous page item name.
+     */
+    protected String nameplatesGuiPreviousPageItemName;
+    /**
+     * Nameplates GUI previous page item model data.
+     */
+    protected int nameplatesGuiPreviousPageItemModelData;
+
+    /**
+     * Nameplates GUI close item slot.
+     */
+    protected int nameplatesGuiCloseItemSlot;
+    /**
+     * Nameplates GUI close item material.
+     */
+    protected String nameplatesGuiCloseItemMaterial;
+    /**
+     * Nameplates GUI close item name.
+     */
+    protected String nameplatesGuiCloseItemName;
+    /**
+     * Nameplates GUI close item model data.
+     */
+    protected int nameplatesGuiCloseItemModelData;
+
+    /**
+     * Nameplates GUI next page item slot.
+     */
+    protected int nameplatesGuiNextPageItemSlot;
+    /**
+     * Nameplates GUI next page item material.
+     */
+    protected String nameplatesGuiNextPageItemMaterial;
+    /**
+     * Nameplates GUI next page item name.
+     */
+    protected String nameplatesGuiNextPageItemName;
+    /**
+     * Nameplates GUI next page item model data.
+     */
+    protected int nameplatesGuiNextPageItemModelData;
+
+    /**
      * Constructs a new {@code ConfigManager} for the specified {@code CustomNameplates} plugin instance.
      *
      * @param plugin The {@code CustomNameplates} plugin instance
@@ -487,6 +582,34 @@ public abstract class ConfigManager implements ConfigLoader, Reloadable {
         hideTeamNames = config.getBoolean("other-settings.hide-team-names", true);
         stripChatColorTags = config.getBoolean("other-settings.strip-chat-color-tags", false);
         forceUpdatePassengerInterval = config.getInt("other-settings.force-update-passenger-interval", -1);
+
+        nameplatesGuiTitle = config.getString("nameplates-gui.title", "Nameplates");
+        nameplatesGuiRows = config.getInt("nameplates-gui.rows", 6);
+        nameplatesGuiPreferredCollatorLanguage = config.getString("nameplates-gui.preferred-collator-language", "default");
+
+        nameplatesGuiFillerItemSlots = config.getIntList("nameplates-gui.filler-item.slots", List.of(45, 47, 48, 50, 51, 53));
+        nameplatesGuiFillerItemMaterial = config.getString("nameplates-gui.filler-item.material", "BLACK_STAINED_GLASS_PANE");
+        nameplatesGuiFillerItemModelData = config.getInt("nameplates-gui.filler-item.model-data", 0);
+
+        nameplatesGuiNameplateItemMaterial = config.getString("nameplates-gui.nameplate-item.material", "NAME_TAG");
+        nameplatesGuiNameplateItemName = config.getString("nameplates-gui.nameplate-item.name", "%nameplate% Nameplate");
+        nameplatesGuiNameplateItemLore = config.getStringList("nameplates-gui.nameplate-item.lore", List.of("Click here to toggle this nameplate"));
+        nameplatesGuiNameplateItemModelData = config.getInt("nameplates-gui.nameplate-item.model-data", 0);
+
+        nameplatesGuiPreviousPageItemSlot = config.getInt("nameplates-gui.previous-page-item.slot", 46);
+        nameplatesGuiPreviousPageItemMaterial = config.getString("nameplates-gui.previous-page-item.material", "ARROW");
+        nameplatesGuiPreviousPageItemName = config.getString("nameplates-gui.previous-page-item.name", "Previous Page");
+        nameplatesGuiPreviousPageItemModelData = config.getInt("nameplates-gui.previous-page-item.model-data", 0);
+
+        nameplatesGuiCloseItemSlot = config.getInt("nameplates-gui.close-item.slot", 49);
+        nameplatesGuiCloseItemMaterial = config.getString("nameplates-gui.close-item.material", "BARRIER");
+        nameplatesGuiCloseItemName = config.getString("nameplates-gui.close-item.name", "Close");
+        nameplatesGuiCloseItemModelData = config.getInt("nameplates-gui.close-item.model-data", 0);
+
+        nameplatesGuiNextPageItemSlot = config.getInt("nameplates-gui.next-page-item.slot", 52);
+        nameplatesGuiNextPageItemMaterial = config.getString("nameplates-gui.next-page-item.material", "ARROW");
+        nameplatesGuiNextPageItemName = config.getString("nameplates-gui.next-page-item.name", "Next Page");
+        nameplatesGuiNextPageItemModelData = config.getInt("nameplates-gui.next-page-item.model-data", 0);
     }
 
     @Override
@@ -939,6 +1062,94 @@ public abstract class ConfigManager implements ConfigLoader, Reloadable {
 
     public static int forceUpdatePassengerInterval() {
         return instance.forceUpdatePassengerInterval;
+    }
+
+    public static String nameplatesGuiTitle() {
+        return instance.nameplatesGuiTitle;
+    }
+
+    public static int nameplatesGuiRows() {
+        return instance.nameplatesGuiRows;
+    }
+
+    public static String nameplatesGuiPreferredCollatorLanguage() {
+        return instance.nameplatesGuiPreferredCollatorLanguage;
+    }
+
+    public static List<Integer> nameplatesGuiFillerItemSlots() {
+        return instance.nameplatesGuiFillerItemSlots;
+    }
+
+    public static String nameplatesGuiFillerItemMaterial() {
+        return instance.nameplatesGuiFillerItemMaterial;
+    }
+
+    public static int nameplatesGuiFillerItemModelData() {
+        return instance.nameplatesGuiFillerItemModelData;
+    }
+
+    public static String nameplatesGuiNameplateItemMaterial() {
+        return instance.nameplatesGuiNameplateItemMaterial;
+    }
+
+    public static String nameplatesGuiNameplateItemName() {
+        return instance.nameplatesGuiNameplateItemName;
+    }
+
+    public static List<String> nameplatesGuiNameplateItemLore() {
+        return instance.nameplatesGuiNameplateItemLore;
+    }
+
+    public static int nameplatesGuiNameplateItemModelData() {
+        return instance.nameplatesGuiNameplateItemModelData;
+    }
+
+    public static int nameplatesGuiPreviousPageItemSlot() {
+        return instance.nameplatesGuiPreviousPageItemSlot;
+    }
+
+    public static String nameplatesGuiPreviousPageItemMaterial() {
+        return instance.nameplatesGuiPreviousPageItemMaterial;
+    }
+
+    public static String nameplatesGuiPreviousPageItemName() {
+        return instance.nameplatesGuiPreviousPageItemName;
+    }
+
+    public static int nameplatesGuiPreviousPageItemModelData() {
+        return instance.nameplatesGuiPreviousPageItemModelData;
+    }
+
+    public static int nameplatesGuiCloseItemSlot() {
+        return instance.nameplatesGuiCloseItemSlot;
+    }
+
+    public static String nameplatesGuiCloseItemMaterial() {
+        return instance.nameplatesGuiCloseItemMaterial;
+    }
+
+    public static String nameplatesGuiCloseItemName() {
+        return instance.nameplatesGuiCloseItemName;
+    }
+
+    public static int nameplatesGuiCloseItemModelData() {
+        return instance.nameplatesGuiCloseItemModelData;
+    }
+
+    public static int nameplatesGuiNextPageItemSlot() {
+        return instance.nameplatesGuiNextPageItemSlot;
+    }
+
+    public static String nameplatesGuiNextPageItemMaterial() {
+        return instance.nameplatesGuiNextPageItemMaterial;
+    }
+
+    public static String nameplatesGuiNextPageItemName() {
+        return instance.nameplatesGuiNextPageItemName;
+    }
+
+    public static int nameplatesGuiNextPageItemModelData() {
+        return instance.nameplatesGuiNextPageItemModelData;
     }
 
     /**

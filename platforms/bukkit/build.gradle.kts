@@ -55,6 +55,14 @@ dependencies {
     compileOnly("org.incendo:cloud-paper:${rootProject.properties["cloud_paper_version"]}")
     // Netty
     compileOnly("io.netty:netty-all:${rootProject.properties["netty_version"]}")
+
+    // Triumph GUI
+    implementation("com.github.lidanthedev.triumph-gui:triumph-gui:${rootProject.properties["triumph_gui_version"]}") {
+        exclude("net.kyori", "adventure-api")
+        exclude("net.kyori", "adventure-text-serializer-legacy")
+        exclude("net.kyori", "adventure-text-serializer-gson")
+        exclude("net.kyori", "adventure-platform-bukkit")
+    }
 }
 
 tasks {
@@ -78,6 +86,7 @@ tasks {
         relocate("redis.clients.jedis", "net.momirealms.customnameplates.libraries.jedis")
         relocate("net.momirealms.sparrow.reflection", "net.momirealms.customnameplates.libraries.reflection")
         relocate("net.momirealms.sparrow.nbt", "net.momirealms.customnameplates.libraries.nbt")
+        relocate("dev.triumphteam.gui", "net.momirealms.customnameplates.libraries.gui")
     }
 }
 
